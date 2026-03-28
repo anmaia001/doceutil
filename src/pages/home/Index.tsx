@@ -658,7 +658,7 @@ export default function HomePage() {
                 <div className="bg-background border border-border rounded-2xl p-5">
                   <p className="text-xs text-muted-foreground mb-1 font-medium">FAVORECIDO</p>
                   <p className="font-bold text-foreground text-base">{PIX_FAVORECIDO}</p>
-                  <p className="text-xs text-muted-foreground mt-2">Tipo: E-mail</p>
+                  <p className="text-xs text-muted-foreground mt-2">Tipo: Telefone</p>
                 </div>
               </div>
 
@@ -978,9 +978,9 @@ export default function HomePage() {
               </p>
               <Link
                 to="/admin"
-                className="text-xs text-background/30 hover:text-background/70 transition-colors flex items-center gap-1 border border-white/10 hover:border-white/30 px-2.5 py-1 rounded-lg"
+                className="text-xs font-semibold text-background/80 hover:text-white transition-colors flex items-center gap-1.5 border border-white/30 hover:border-white/70 hover:bg-white/10 px-3 py-1.5 rounded-lg"
               >
-                🔐 Admin
+                🔐 Área Admin
               </Link>
             </div>
           </div>
@@ -990,6 +990,14 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           FLOATING WHATSAPP BUTTON
       ════════════════════════════════════════════ */}
+      {/* Floating Admin Button */}
+      <Link
+        to="/admin"
+        className="fixed bottom-6 left-6 z-40 flex items-center gap-2 px-3 py-2.5 rounded-xl shadow-lg text-xs font-semibold transition-all bg-foreground/80 hover:bg-foreground text-background border border-white/10"
+      >
+        🔐 <span className="hidden sm:block">Área Admin</span>
+      </Link>
+
       <motion.a
         href={`https://wa.me/${WHATSAPP_NUMBER}`}
         target="_blank"
