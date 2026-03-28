@@ -18,7 +18,7 @@ import {
   Heart,
   Package,
 } from 'lucide-react';
-import { products, utilidades, doces } from '@/data/products';
+import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/hooks/useCart';
 import { formatCurrency, WHATSAPP_NUMBER, PIX_KEY, PIX_FAVORECIDO } from '@/lib/whatsapp';
 import Header from '@/components/Header';
@@ -130,6 +130,9 @@ const heroSlides = [
 ];
 
 export default function HomePage() {
+  const { products } = useProducts();
+  const utilidades = products.filter(p => p.category === 'utilidades');
+  const doces = products.filter(p => p.category === 'doces');
   const { openCart, totalItems } = useCart();
   const [activeTab, setActiveTab] = useState<'todos' | 'utilidades' | 'doces'>('todos');
   const [copied, setCopied] = useState(false);
