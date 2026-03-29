@@ -256,26 +256,6 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* Hero stats bar */}
-        <div className="absolute bottom-0 left-0 right-0 z-10">
-          <div className="bg-card/95 border-t border-border/50" style={{ backdropFilter: 'blur(12px)' }}>
-            <div className="container mx-auto px-4 py-3 grid grid-cols-3 divide-x divide-border">
-              {[
-                { icon: '⭐', value: '4.9/5', label: 'Avaliação' },
-                { icon: '📦', value: '2.000+', label: 'Pedidos' },
-                { icon: '🏆', value: '100%', label: 'Satisfação' },
-              ].map((s, i) => (
-                <div key={i} className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4">
-                  <span className="text-lg">{s.icon}</span>
-                  <div className="text-center sm:text-left">
-                    <p className="font-bold text-foreground text-sm sm:text-base">{s.value}</p>
-                    <p className="text-xs text-muted-foreground hidden sm:block">{s.label}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* ═══════════════════════════════════════════
