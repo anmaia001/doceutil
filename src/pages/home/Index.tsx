@@ -767,7 +767,7 @@ export default function HomePage() {
                   <Phone size={15} className="mt-0.5 flex-shrink-0 text-accent" />
                   <div>
                     <span className="block text-background/90 font-medium">WhatsApp</span>
-                    (21) 99999-9999
+                    (24) 99257-5555
                   </div>
                 </li>
               </ul>
