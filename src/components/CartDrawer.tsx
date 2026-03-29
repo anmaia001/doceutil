@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ShoppingBag, Trash2, Plus, Minus, MessageCircle, User, MapPin, ChevronRight } from 'lucide-react';
 import { useCart } from '@/hooks/useCart';
-import { formatCurrency, buildWhatsAppMessage, openWhatsApp } from '@/lib/whatsapp';
+import { formatCurrency, buildWhatsAppMessage, openWhatsApp, PIX_KEY, PIX_FAVORECIDO } from '@/lib/whatsapp';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -175,8 +175,18 @@ export default function CartDrawer() {
                   </div>
 
                   <div className="bg-accent/20 border border-accent/30 rounded-xl p-4">
-                    <p className="text-sm font-bold text-foreground">💳 Pagamento via PIX</p>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p className="text-sm font-bold text-foreground mb-2">💳 Pagamento via PIX</p>
+                    <div className="flex flex-col gap-1.5">
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-muted-foreground">Chave PIX (Telefone):</span>
+                        <span className="font-bold text-foreground select-all">{PIX_KEY}</span>
+                      </div>
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-muted-foreground">Favorecido:</span>
+                        <span className="font-semibold text-foreground">{PIX_FAVORECIDO}</span>
+                      </div>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-2">
                       Após enviar o pedido, realize o pagamento via PIX e envie o comprovante.
                     </p>
                   </div>
