@@ -2,7 +2,7 @@ import { CartItem } from '@/hooks/useCart';
 
 const WHATSAPP_NUMBER = '5524992575555';
 const PIX_KEY = '5524992575555';
-const PIX_FAVORECIDO = 'Casa&Doce';
+const PIX_FAVORECIDO = 'Doce & Útil';
 
 export const formatCurrency = (value: number): string =>
   value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -13,7 +13,7 @@ export const buildWhatsAppMessage = (
   address: string
 ): string => {
   const lines: string[] = [
-    '🛒 *NOVO PEDIDO - Casa&Doce* 🛒',
+    '🛒 *NOVO PEDIDO - Doce & Útil* 🛒',
     '',
     '━━━━━━━━━━━━━━━━━━',
     '*📦 ITENS DO PEDIDO:*',

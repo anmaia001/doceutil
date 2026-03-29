@@ -759,7 +759,7 @@ export default function HomePage() {
 
           <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs text-background/45">
-              © {new Date().getFullYear()} Casa&Doce. Todos os direitos reservados.
+              © {new Date().getFullYear()} Doce & Útil. Todos os direitos reservados.
             </p>
             <div className="flex items-center gap-4">
               <p className="text-xs text-background/45">

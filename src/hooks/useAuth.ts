@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-const ADMIN_PASSWORD = 'casadoce@2025';
+const ADMIN_PASSWORD = 'doceutil@2025';
 
 interface AuthStore {
   isAuthenticated: boolean;
@@ -25,7 +25,7 @@ export const useAuth = create<AuthStore>()(
       logout: () => set({ isAuthenticated: false }),
     }),
     {
-      name: 'casadoce-auth',
+      name: 'doceutil-auth',
     }
   )
 );

@@ -46,7 +46,7 @@ export default function AdminLogin() {
             >
               Área Administrativa
             </h1>
-            <p className="text-white/75 text-sm mt-1">Casa&Doce — Gerenciamento</p>
+            <p className="text-white/75 text-sm mt-1">Doce & Útil — Gerenciamento</p>
           </div>
 
           {/* Form */}
@@ -104,7 +104,7 @@ export default function AdminLogin() {
             <div className="mt-6 pt-5 border-t border-border">
               <div className="bg-muted/60 rounded-xl px-4 py-3 mb-4 text-center">
                 <p className="text-xs text-muted-foreground mb-1 font-medium">🔑 Senha padrão de acesso:</p>
-                <p className="text-sm font-bold text-foreground tracking-widest select-all">casadoce@2025</p>
+                <p className="text-sm font-bold text-foreground tracking-widest select-all">doceutil@2025</p>
                 <p className="text-xs text-muted-foreground mt-1">Clique na senha acima para selecionar e copiar</p>
               </div>
               <div className="text-center">

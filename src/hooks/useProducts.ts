@@ -45,7 +45,7 @@ export const useProducts = create<ProductsStore>()(
       },
     }),
     {
-      name: 'casadoce-products',
+      name: 'doceutil-products',
     }
   )
 );
