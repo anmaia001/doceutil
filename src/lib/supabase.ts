@@ -4,3 +4,4 @@ const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'https://gvtzxzwikjfwy
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_KEY || 'sb_publishable_kOFLKuCt-NMEGV-cG2pVfQ_yZbvYPSb';
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// deploy Sun Apr 12 23:38:06 UTC 2026
