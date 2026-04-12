@@ -112,7 +112,7 @@ const docesRotativas = [
 
 const heroSlides = [
   {
-    image: 'https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=1600&q=85',
+    image: '/queijo-frescal.png',
     badge: '🍮 Doces Artesanais',
     title: 'Doce & Útil',
     subtitle: 'Doces artesanais irresistíveis\ncom entrega porta a porta no RJ',
