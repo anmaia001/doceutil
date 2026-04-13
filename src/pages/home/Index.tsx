@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/hooks/useCart';
-import { formatCurrency, WHATSAPP_NUMBER, PIX_KEY, PIX_FAVORECIDO } from '@/lib/whatsapp';
+import { formatCurrency, WHATSAPP_NUMBER } from '@/lib/whatsapp';
 import Header from '@/components/Header';
 import CartDrawer from '@/components/CartDrawer';
 import ProductCard from '@/components/ProductCard';
@@ -158,11 +158,7 @@ export default function HomePage() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const copyPix = () => {
-    navigator.clipboard.writeText(PIX_KEY);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  // PIX removido
 
   const slide = heroSlides[heroIndex];
 
@@ -560,59 +556,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════
-          PAGAMENTO PIX
-      ════════════════════════════════════════════ */}
-      <section className="py-16 bg-gradient-to-br from-accent/20 via-background to-primary/5">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-card rounded-3xl border-2 border-accent/40 p-8 sm:p-10 text-center shadow-xl"
-            >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-accent/20 mb-5">
-                <span className="text-3xl">💳</span>
-              </div>
-              <h2
-                className="text-2xl sm:text-3xl font-bold text-foreground mb-2"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
-                Pagamento Exclusivamente por PIX
-              </h2>
-              <p className="text-muted-foreground mb-8 text-sm sm:text-base">
-                Rápido, seguro e sem taxas. Pague em segundos!
-              </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-8">
-                <div className="bg-background border border-border rounded-2xl p-5">
-                  <p className="text-xs text-muted-foreground mb-1 font-medium">CHAVE PIX</p>
-                  <p className="font-bold text-foreground text-base">{PIX_KEY}</p>
-                  <button
-                    onClick={copyPix}
-                    className="mt-3 flex items-center gap-2 mx-auto text-xs font-semibold text-primary hover:text-primary/80 transition-colors"
-                  >
-                    {copied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
-                    {copied ? 'Copiado!' : 'Copiar Chave'}
-                  </button>
-                </div>
-                <div className="bg-background border border-border rounded-2xl p-5">
-                  <p className="text-xs text-muted-foreground mb-1 font-medium">FAVORECIDO</p>
-                  <p className="font-bold text-foreground text-base">{PIX_FAVORECIDO}</p>
-                  <p className="text-xs text-muted-foreground mt-2">Tipo: Telefone</p>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
-                {['✅ Aprovação Instantânea', '🔒 100% Seguro', '💨 Sem Taxas', '⚡ Confirmação Rápida'].map(item => (
-                  <span key={item} className="flex items-center gap-1">{item}</span>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* ═══════════════════════════════════════════
           ENTREGA
