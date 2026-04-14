@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShoppingCart, Plus, Minus, Star } from 'lucide-react';
+import { ShoppingCart, Plus, Minus } from 'lucide-react';
 import { Product } from '@/data/products';
 import { useCart } from '@/hooks/useCart';
 import { formatCurrency } from '@/lib/whatsapp';
@@ -94,14 +94,6 @@ export default function ProductCard({ product }: ProductCardProps) {
         <p className="text-xs text-muted-foreground line-clamp-2 min-h-[2.5rem] mb-3">
           {product.description}
         </p>
-
-        {/* Stars */}
-        <div className="flex items-center gap-0.5 mb-3">
-          {[1,2,3,4,5].map(s => (
-            <Star key={s} size={11} className="fill-accent text-accent" />
-          ))}
-          <span className="text-xs text-muted-foreground ml-1">(4.9)</span>
-        </div>
 
         {/* Price */}
         <div className="flex items-baseline gap-1 mb-3">
