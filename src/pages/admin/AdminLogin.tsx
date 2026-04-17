@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Lock, Eye, EyeOff, LogIn, AlertCircle } from 'lucide-react';
+import { Lock, Eye, EyeOff, LogIn, AlertCircle, Mail } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 export default function AdminLogin() {
   const { login } = useAuth();
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [show, setShow] = useState(false);
   const [error, setError] = useState('');
@@ -16,10 +17,9 @@ export default function AdminLogin() {
     e.preventDefault();
     setError('');
     setLoading(true);
-    await new Promise(r => setTimeout(r, 600));
-    const ok = login(password);
-    if (!ok) {
-      setError('Senha incorreta. Tente novamente.');
+    const result = await login(email, password);
+    if (!result.ok) {
+      setError(result.error || 'E-mail ou senha incorretos.');
       setPassword('');
     }
     setLoading(false);
@@ -33,7 +33,6 @@ export default function AdminLogin() {
         transition={{ duration: 0.4, ease: 'easeOut' }}
         className="w-full max-w-md"
       >
-        {/* Card */}
         <div className="bg-card border border-border rounded-3xl shadow-2xl overflow-hidden">
           {/* Header */}
           <div className="bg-primary px-8 py-8 text-center">
@@ -52,18 +51,38 @@ export default function AdminLogin() {
           {/* Form */}
           <div className="px-8 py-8">
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              {/* Campo E-mail */}
               <div>
                 <label className="text-sm font-semibold text-foreground mb-2 block">
-                  Senha de Acesso
+                  E-mail
+                </label>
+                <div className="relative">
+                  <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                  <Input
+                    type="email"
+                    placeholder="seu@email.com"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    className="pl-9 h-12 text-base bg-background"
+                    autoFocus
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Campo Senha */}
+              <div>
+                <label className="text-sm font-semibold text-foreground mb-2 block">
+                  Senha
                 </label>
                 <div className="relative">
                   <Input
                     type={show ? 'text' : 'password'}
-                    placeholder="Digite a senha..."
+                    placeholder="Digite sua senha..."
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     className="pr-12 h-12 text-base bg-background"
-                    autoFocus
+                    required
                   />
                   <button
                     type="button"
@@ -88,7 +107,7 @@ export default function AdminLogin() {
 
               <Button
                 type="submit"
-                disabled={!password || loading}
+                disabled={!email || !password || loading}
                 className="h-12 text-base font-bold gap-2"
                 size="lg"
               >
@@ -113,7 +132,7 @@ export default function AdminLogin() {
         </div>
 
         <p className="text-center text-xs text-muted-foreground mt-4">
-          Acesso restrito a administradores
+          Acesso restrito a administradores autorizados
         </p>
       </motion.div>
     </div>
