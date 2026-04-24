@@ -213,9 +213,27 @@ export const useCustomers = create<CustomersStore>()((set, get) => ({
           .eq('id', existing.id);
       } catch { /* ignore */ }
     } else {
-      // Novo cliente
+      // Novo cliente — persiste direto no Supabase
+      const { data: inserted, error } = await supabase
+        .from('customers')
+        .insert({
+          name,
+          phone: phone ?? '',
+          address: address ?? '',
+          city: city ?? '',
+          email: '',
+          note: 'Cadastrado automaticamente via pedido',
+          interactions: [newInteraction],
+        })
+        .select()
+        .single();
+
+      if (error) {
+        console.error('[CRM] Erro ao cadastrar cliente:', error.message);
+      }
+
       const newCustomer: Customer = {
-        id: `c_${Date.now()}`,
+        id: inserted ? String(inserted.id) : `c_${Date.now()}`,
         name,
         phone: phone ?? '',
         address: address ?? '',
@@ -226,30 +244,6 @@ export const useCustomers = create<CustomersStore>()((set, get) => ({
         interactions: [newInteraction],
       };
       set(state => ({ customers: [newCustomer, ...state.customers] }));
-      // Persiste no Supabase
-      try {
-        const { data: inserted } = await supabase
-          .from('customers')
-          .insert({
-            name,
-            phone: phone ?? '',
-            address: address ?? '',
-            city: city ?? '',
-            email: '',
-            note: 'Cadastrado automaticamente via pedido',
-            interactions: [newInteraction],
-          })
-          .select()
-          .single();
-
-        if (inserted) {
-          set(state => ({
-            customers: state.customers.map(c =>
-              c.id === newCustomer.id ? { ...c, id: String(inserted.id) } : c
-            ),
-          }));
-        }
-      } catch { /* ignore */ }
     }
   },
 
