@@ -22,8 +22,12 @@ export default function CartDrawer() {
 
     const productNames = items.map(i => `${i.quantity}x ${i.product.name}`).join(', ');
 
-    // Cadastro automático no CRM ao confirmar pedido
-    await upsertCustomerFromOrder({
+    // Abre WhatsApp imediatamente
+    const message = buildWhatsAppMessage(items, customerName, address);
+    openWhatsApp(message);
+
+    // Cadastro automático no CRM em segundo plano
+    upsertCustomerFromOrder({
       name: customerName.trim(),
       phone: phone.trim() || '',
       address: address.trim(),
@@ -32,8 +36,6 @@ export default function CartDrawer() {
       total,
     });
 
-    const message = buildWhatsAppMessage(items, customerName, address);
-    openWhatsApp(message);
     clearCart();
     closeCart();
   };
