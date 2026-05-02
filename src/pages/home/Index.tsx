@@ -120,6 +120,15 @@ const heroSlides = [
     section: 'produtos',
     overlay: 'from-black/60 via-black/30 to-transparent',
   },
+  {
+    image: '/hero-doce-leite.png',
+    badge: '🍬 Doces Artesanais',
+    title: 'Doce & Útil',
+    subtitle: 'Doce de leite artesanal e muito mais\ncom entrega porta a porta no RJ',
+    cta: 'Ver Produtos',
+    section: 'produtos',
+    overlay: 'from-black/60 via-black/30 to-transparent',
+  },
 ];
 
 export default function HomePage() {
